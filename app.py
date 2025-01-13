@@ -39,11 +39,13 @@ async def get_game_thumbnails():
     try:
         print("[Fetching] Getting new thumbnail data...")
         url = "https://thumbnails.roblox.com/v1/batch"
+        payload = [{"targetId": 0, "token": ""}]  # Example payload
 
         async with get_client() as client:
-            response = await client.get(
+            response = await client.post(
                 url,
                 headers=headers,
+                json=payload,
                 timeout=5.0
             )
 
